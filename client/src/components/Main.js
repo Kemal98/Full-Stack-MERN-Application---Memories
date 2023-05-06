@@ -11,15 +11,15 @@ export default function Main({ currentId, setCurrentId }) {
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
-  const theme = useTheme();
 
+  const theme = useTheme();
   const form = useMediaQuery(theme.breakpoints.between("xs", "sm"));
 
   return (
     <>
       <Box component="main" sx={{ mt: "2rem" }}>
         <Grow in>
-          <Container>
+          <Box sx={{maxWidth:"1600px",mt:"3rem"}}>
             <Grid
               container
               justifyContent="space-between"
@@ -36,7 +36,7 @@ export default function Main({ currentId, setCurrentId }) {
                 <Posts setCurrentId={setCurrentId} />
               </Grid>
             </Grid>
-          </Container>
+          </Box>
         </Grow>
       </Box>
     </>

@@ -49,7 +49,6 @@ export const StyledSearchInputBase = styled(InputBase)(({ theme }) => ({
 
 const SearchInput = ({ open }) => {
 
-  
   return (
     <>
       {open ? (

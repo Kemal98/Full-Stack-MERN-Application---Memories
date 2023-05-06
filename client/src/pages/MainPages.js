@@ -12,7 +12,6 @@ import React, { useEffect, useState } from "react";
 import Form from "../components/Form/Form";
 import Main from "../components/Main";
 import Navbar from "../components/Navbar/Navbar";
-import SearchInput from "../components/Search/Search";
 
 const drawerWidth = 240;
 
@@ -81,9 +80,10 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+export default function MainPages() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [currentId, setCurrentId] = useState(null);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -93,21 +93,6 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.pageYOffset;
-      setScrollPosition(position);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-  const [currentId, setCurrentId] = useState(null);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -138,7 +123,7 @@ export default function MiniDrawer() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <SearchInput open={open} />
+        {/* <SearchInput open={open} /> */}
         <Form open={open} currentId={currentId} setCurrentId={setCurrentId} />
         {/* <Divider /> */}
       </Drawer>

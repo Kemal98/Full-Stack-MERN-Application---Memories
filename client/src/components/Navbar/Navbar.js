@@ -31,7 +31,6 @@ const Navbar = () => {
         width: "100%",
         marginLeft: "4rem",
         py: "20px",
-        maxWidth: "1200px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",

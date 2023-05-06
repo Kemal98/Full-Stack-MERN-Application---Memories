@@ -1,11 +1,11 @@
 import Box from "@mui/material/Box";
-import GlobalPages from "./pages/GlobalPages";
+import MainPages from "./pages/MainPages";
 
 function App() {
   return (
     <Box sx={{ display: "flex" }}>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <GlobalPages />
+        <MainPages />
       </Box>
     </Box>
   );

@@ -147,7 +147,6 @@ const Form = ({ currentId, setCurrentId, open }) => {
                 size="large"
                 type="submit"
                 fullWidth
-                endIcon={<AddIcon />}
               >
                 Add Memories
               </Button>
