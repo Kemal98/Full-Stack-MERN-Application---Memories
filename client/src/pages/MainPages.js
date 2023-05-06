@@ -109,7 +109,7 @@ export default function MainPages() {
         open={open}
       >
         <Toolbar>
-          <Navbar />
+          <Navbar open={open} />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

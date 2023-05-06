@@ -11,7 +11,7 @@ const slogans = [
   "Store your adventures in a safe place",
   "Memories you want to keep forever",
 ];
-const Navbar = () => {
+const Navbar = ({open}) => {
   const [currentSloganIndex, setCurrentSloganIndex] = useState(0);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Navbar = () => {
       sx={{
         maxWidth: "auto",
         width: "100%",
-        marginLeft: "4rem",
+        marginLeft: !open ? "4rem" : "0rem",
         py: "20px",
         display: "flex",
         justifyContent: "space-between",
@@ -64,8 +64,12 @@ const Navbar = () => {
             alt="memoryImg"
           />
         </Box>
-        <Box display="flex" sx={{textTransform: "uppercase",fontFamily: "Montserrat"}}>
-          {slogans[currentSloganIndex]}</Box>
+        <Box
+          display="flex"
+          sx={{ textTransform: "uppercase", fontFamily: "Montserrat" }}
+        >
+          {slogans[currentSloganIndex]}
+        </Box>
       </Stack>
     </Box>
   );
