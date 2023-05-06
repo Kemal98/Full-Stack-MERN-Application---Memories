@@ -11,14 +11,12 @@ export const getPosts = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
-  const { title, message, selectedFile, creator, tags, check } = req.body;
+  const { title, details, selectedFile, creator } = req.body;
   const newPost = new PostMessage({
     title,
-    message,
+    details,
     selectedFile,
     creator,
-    tags,
-    check,
   });
   try {
     await newPost.save();
