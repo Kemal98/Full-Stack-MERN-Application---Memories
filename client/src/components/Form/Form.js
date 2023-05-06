@@ -18,7 +18,7 @@ const Form = ({ currentId, setCurrentId, open }) => {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
-    message: "",
+    details:"",
     check: false,
     tags: "",
     selectedFile: "",
@@ -48,7 +48,7 @@ const Form = ({ currentId, setCurrentId, open }) => {
     setPostData({
       creator: "",
       title: "",
-      message: "",
+      details: "",
       tags: "",
       selectedFile: "",
     });
@@ -106,11 +106,11 @@ const Form = ({ currentId, setCurrentId, open }) => {
                 onChange={(e) =>
                   setPostData({ ...postData, title: e.target.value })
                 }
-              />
+              />{" "}
               <TextField
-                name="message"
+                name="details"
                 variant="outlined"
-                label="Message"
+                label="Details location"
                 sx={{
                   "& .MuiInputBase-root": {
                     borderRadius: "20px",
@@ -119,9 +119,9 @@ const Form = ({ currentId, setCurrentId, open }) => {
                 fullWidth
                 multiline
                 rows={4}
-                value={postData.message}
+                value={postData.details}
                 onChange={(e) =>
-                  setPostData({ ...postData, message: e.target.value })
+                  setPostData({ ...postData, details: e.target.value })
                 }
               />
               <div>
@@ -174,7 +174,7 @@ const Form = ({ currentId, setCurrentId, open }) => {
                 size="large"
                 type="submit"
                 disabled={
-                  !postData.creator || !postData.title || !postData.message
+                  !postData.creator || !postData.title || !postData.details
                 }
                 fullWidth
               >
@@ -188,7 +188,7 @@ const Form = ({ currentId, setCurrentId, open }) => {
                 onClick={() => clear()}
                 fullWidth
                 disabled={
-                  !postData.creator || !postData.title || !postData.message
+                  !postData.creator || !postData.title || !postData.details
                 }
               >
                 Clear

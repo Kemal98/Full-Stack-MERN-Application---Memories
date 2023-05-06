@@ -144,7 +144,7 @@ const Post = ({ post, setCurrentId }) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent sx={{ overflowY: "scroll", maxHeight: "10rem" }}>
           <Typography paragraph>Details:</Typography>
-          <Typography paragraph>{post.message}</Typography>
+          <Typography paragraph>{post.details}</Typography>
         </CardContent>
       </Collapse>
     </Card>
