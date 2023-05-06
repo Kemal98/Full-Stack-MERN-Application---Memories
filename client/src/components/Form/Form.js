@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
 const Form = ({ currentId, setCurrentId, open }) => {
   const [postData, setPostData] = useState({
@@ -52,7 +53,16 @@ const Form = ({ currentId, setCurrentId, open }) => {
       selectedFile: "",
     });
   };
+  const [displayFileBase, setDisplayFileBase] = useState(false);
 
+  const handleAddPhotoClick = () => {
+    setDisplayFileBase(true);
+  };
+
+  const handleFileBaseDone = ({ base64 }) => {
+    setPostData({ ...postData, selectedFile: base64 });
+    setDisplayFileBase(false);
+  };
   return (
     <Paper sx={{ padding: "10px" }}>
       <form autoComplete="off" noValidate onSubmit={handleSubmit}>
@@ -115,13 +125,25 @@ const Form = ({ currentId, setCurrentId, open }) => {
                 }
               />
               <div>
-                <FileBase
-                  type="file"
-                  multiple={false}
-                  onDone={({ base64 }) =>
-                    setPostData({ ...postData, selectedFile: base64 })
-                  }
-                />
+                {!displayFileBase && (
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    type="submit"
+                    fullWidth
+                    onClick={handleAddPhotoClick}
+                    endIcon={<AddAPhotoIcon />}
+                  >
+                    Add Photo
+                  </Button>
+                )}
+                {displayFileBase && (
+                  <FileBase
+                    type="file"
+                    multiple={false}
+                    onDone={handleFileBaseDone}
+                  />
+                )}
               </div>
             </>
           ) : (
@@ -140,28 +162,38 @@ const Form = ({ currentId, setCurrentId, open }) => {
           )}
 
           {open ? (
-            <>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="stretch"
+              spacing={2}
+            >
               <Button
-                variant="contained"
+                variant="outlined"
                 color="primary"
                 size="large"
                 type="submit"
+                disabled={
+                  !postData.creator || !postData.title || !postData.message
+                }
                 fullWidth
               >
                 Add Memories
               </Button>
 
               <Button
-                variant="contained"
+                variant="outlined"
                 color="secondary"
                 size="small"
-                endIcon={<ClearIcon />}
                 onClick={() => clear()}
                 fullWidth
+                disabled={
+                  !postData.creator || !postData.title || !postData.message
+                }
               >
                 Clear
               </Button>
-            </>
+            </Stack>
           ) : (
             <>
               <AddIcon sx={{ mt: "4px" }} />
